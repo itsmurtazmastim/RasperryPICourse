@@ -1,14 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {Http,Headers,Response,RequestOptions} from '@angular/http'
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController) {
+let url:any='http://localhost:3000'
+  constructor(public navCtrl: NavController,private http:Http) {
 
   }
-
+  callGetApi(uri){
+    
+this.http.get(this.url+uri)
+.subscribe((res:Response)=>{
+console.log(res)      
+},(err)=>{
+console.log(err)
+}) 
+  }
 }
